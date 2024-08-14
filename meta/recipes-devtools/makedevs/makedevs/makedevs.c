@@ -202,7 +202,7 @@ static unsigned long convert2guid(char *id_buf, struct name_id *search_list)
 		// Check for bad user/group name
 		node = search_list;
 		while (node != NULL) {
-			if (!strncmp(node->name, id_buf, strlen(id_buf))) {
+			if (!strcmp(node->name, id_buf)) {
 				fprintf(stderr, "WARNING: Bad user/group name %s detected\n", id_buf);
 				break;
 			}
@@ -212,7 +212,7 @@ static unsigned long convert2guid(char *id_buf, struct name_id *search_list)
 	} else {
 		node = search_list;
 		while (node != NULL) {
-			if (!strncmp(node->name, id_buf, strlen(id_buf)))
+			if (!strcmp(node->name, id_buf))
 				return node->id;
 			node = node->next;
 		}
